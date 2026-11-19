@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>BODBRIDGE - Digital Innovations</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background-color: #f1f0ff;
+            margin: 0;
+        }
+
+        header {
+            background-color: #5145d8;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #201d69;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+        }
+
+        section {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #5145d8;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            background-color: #5145d8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #201d69;
+        }
+
+        footer {
+            background-color: #201d69;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>BODBRIDGE</h1>
+
+        <p>Connecting Ideas Through Digital Innovation</p>
+
+    </header>
+
+    <nav>
+
+        <a href="#home">Home</a>
+        <a href="#innovations">Services</a>
+        <a href="#research">Projects</a>
+
+    </nav>
+
+    <section id="home">
+
+        <h2>Welcome to BODBRIDGE</h2>
+
+        <p>
+            BODBRIDGE explores modern technology and
+            digital solutions to create a smarter future.
+            We connect people, ideas, and innovation
+            through technology.
+        </p>
+
+    </section>
+
+    <section id="innovations">
+
+        <h2>Digital Innovations</h2>
+
+        <h3>Web Development</h3>
+        <p>Creates modern and responsive websites for businesses.</p>
+
+        <h3>Artificial Intelligence</h3>
+        <p>Uses intelligent technology to solve real-world problems.</p>
+
+        <h3>Digital Technology</h3>
+        <p>Provides smart digital solutions and technology services.</p>
+
+    </section>
+
+    <section id="research">
+
+        <h2>Project Data Management</h2>
+
+        <h3>BODBRIDGE Project Information</h3>
+
+        <button onclick="loadData()">
+            Load Data
+        </button>
+
+        <p id="result"></p>
+
+        <h3>Submit Your Project</h3>
+
+        <input type="text" id="name"
+        placeholder="Project Name">
+
+        <input type="text" id="researcher"
+        placeholder="Developer Name">
+
+        <textarea id="description"
+        placeholder="Project Description"></textarea>
+
+        <button onclick="submitData()">
+            Submit
+        </button>
+
+        <p id="message"></p>
+
+    </section>
+
+    <footer>
+
+        <p>© 2026 BODBRIDGE Digital Innovations</p>
+
+    </footer>
+
+    <script>
+
+        // 1. JavaScript Function
+
+        function loadData() {
+
+            // 2. API Call
+
+            fetch("https://jsonplaceholder.typicode.com/posts/1")
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                document.getElementById("result").innerHTML =
+                "Project Information: " + data.title;
+
+                console.log(data);
+
+            })
+
+            .catch(error => {
+
+                console.log("Error:", error);
+
+                document.getElementById("result").innerHTML =
+                "Unable to load project information.";
+
+            });
+
+        }
+
+
+        // 3. Input Validation
+
+        function submitData() {
+
+            let name = document.getElementById("name").value;
+
+            let researcher = document.getElementById("researcher").value;
+
+            let description = document.getElementById("description").value;
+
+            // 4. Test and Debugging
+
+            if (name == "" || researcher == "" || description == "") {
+
+                document.getElementById("message").innerHTML =
+                "Please fill all the fields.";
+
+                return;
+
+            }
+
+            document.getElementById("message").innerHTML =
+            "Project submitted successfully!";
+
+            console.log("Project submitted");
+
+        }
+
+    </script>
+
+</body>
+</html>
